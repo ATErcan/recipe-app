@@ -17,7 +17,7 @@ const Navbar = () => {
 
   return (
     <StyledNav>
-      <MainHeading>{`<aTe></ResTauranT>`}</MainHeading>
+      <MainHeading>{`<aTe></Recipes>`}</MainHeading>
       <Icon onClick={toggleNavbar} />
 
       <NavContainer navToggle={navToggle}>

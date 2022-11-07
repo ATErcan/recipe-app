@@ -7,9 +7,11 @@ export const StyledNav = styled.nav`
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+  background-color: rgba(42, 42, 42, 0.9);
+  color: #fff;
 `;
 
-export const MainHeading = styled.h1`
+export const MainHeading = styled.h2`
   font-size: 1.3rem;
   padding: 1rem;
 `;
