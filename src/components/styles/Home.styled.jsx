@@ -8,7 +8,7 @@ export const HomeSection = styled.section`
   background-size: cover;
   background-attachment: fixed;
   padding: 2rem 1.5rem;
-  height: 100vh;
+  height: calc(100vh - 56px);
   display: flex;
   flex-direction: column;
   justify-content: center;

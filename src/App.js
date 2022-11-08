@@ -6,6 +6,7 @@ import { LoginContext } from "./context/LoginContext";
 import { useState } from "react";
 import Login from "./components/Login/Login";
 import SignUp from "./components/Login/SignUp";
+import About from "./components/About/About";
 
 function App() {
   const [login, setLogin] = useState(false);
@@ -17,6 +18,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="about" element={<About />} />
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<SignUp />} />
         </Routes>

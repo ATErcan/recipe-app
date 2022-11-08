@@ -41,3 +41,12 @@ export const NavLinks = styled(NavLink)`
   padding: 0.4rem 0;
   text-indent: 1rem;
 `;
+
+export const GitHub = styled.a`
+  text-decoration: none;
+  font-size: 1.1rem;
+  color: #fff;
+  background-color: #2a2a2a;
+  padding: 0.4rem 0;
+  text-indent: 1rem;
+`;

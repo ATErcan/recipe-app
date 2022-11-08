@@ -1,5 +1,4 @@
 import { useContext, useState } from "react";
-import { NavLink } from "react-router-dom";
 import { LoginContext } from "../../context/LoginContext";
 import {
   NavContainer,
@@ -7,6 +6,7 @@ import {
   MainHeading,
   NavLinks,
   StyledNav,
+  GitHub,
 } from "../styles/Navbar.styled";
 
 const Navbar = () => {
@@ -24,9 +24,11 @@ const Navbar = () => {
 
       <NavContainer navToggle={navToggle}>
         <NavLinks to="/">Recipe</NavLinks>
-        <NavLinks to="/">About</NavLinks>
-        <NavLinks to="/">Github</NavLinks>
-        <NavLinks to="/login">{login ? "Logout" : "Login"}</NavLinks>
+        <NavLinks to="about">About</NavLinks>
+        <GitHub href="https://github.com/ATErcan" target="_blank">
+          Github
+        </GitHub>
+        <NavLinks to="login">{login ? "Logout" : "Login"}</NavLinks>
       </NavContainer>
     </StyledNav>
   );
