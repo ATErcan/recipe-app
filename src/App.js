@@ -7,6 +7,7 @@ import { useState } from "react";
 import Login from "./components/Login/Login";
 import SignUp from "./components/Login/SignUp";
 import About from "./components/About/About";
+import Recipe from "./components/Recipe/Recipe";
 
 function App() {
   const [login, setLogin] = useState(false);
@@ -21,6 +22,7 @@ function App() {
           <Route path="about" element={<About />} />
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<SignUp />} />
+          <Route path="recipe" element={<Recipe />} />
         </Routes>
       </Br>
     </LoginContext.Provider>

@@ -13,7 +13,7 @@ import {
   LoginTitle,
   RecipeImage,
   SignUpLink,
-} from "./Login.styled";
+} from "../styles/Login.styled";
 import Button from "@mui/material/Button";
 
 const Login = () => {
