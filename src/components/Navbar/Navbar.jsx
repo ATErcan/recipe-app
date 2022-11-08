@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { LoginContext } from "../../context/LoginContext";
 import {
   NavContainer,
   Icon,
@@ -9,6 +10,7 @@ import {
 } from "../styles/Navbar.styled";
 
 const Navbar = () => {
+  const { login, setLogin } = useContext(LoginContext);
   const [navToggle, setNavToggle] = useState(false);
 
   const toggleNavbar = () => {
@@ -24,7 +26,7 @@ const Navbar = () => {
         <NavLinks to="/">Recipe</NavLinks>
         <NavLinks to="/">About</NavLinks>
         <NavLinks to="/">Github</NavLinks>
-        <NavLinks to="/">Login/Logout</NavLinks>
+        <NavLinks to="/login">{login ? "Logout" : "Login"}</NavLinks>
       </NavContainer>
     </StyledNav>
   );
