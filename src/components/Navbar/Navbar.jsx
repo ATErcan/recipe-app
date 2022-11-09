@@ -23,7 +23,7 @@ const Navbar = () => {
       <Icon onClick={toggleNavbar} />
 
       <NavContainer navToggle={navToggle}>
-        <NavLinks to="/">Recipe</NavLinks>
+        <NavLinks to="recipe">Recipe</NavLinks>
         <NavLinks to="about">About</NavLinks>
         <GitHub href="https://github.com/ATErcan" target="_blank">
           Github
