@@ -48,3 +48,9 @@ export const FlexCol = styled.div`
   display: flex;
   flex-direction: column;
 `;
+
+export const SuccessText = styled.h5`
+  color: #0f0;
+  text-align: center;
+  font-size: 1.1rem;
+`;

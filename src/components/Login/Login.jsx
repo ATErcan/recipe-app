@@ -4,6 +4,8 @@ import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import InputLabel from "@mui/material/InputLabel";
+import FormControl from "@mui/material/FormControl";
 import {
   FlexCol,
   Form,
@@ -15,8 +17,33 @@ import {
   SignUpLink,
 } from "../styles/Login.styled";
 import Button from "@mui/material/Button";
+import { useState } from "react";
 
 const Login = () => {
+  const [log, setLog] = useState({
+    email: "",
+    password: "",
+  });
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleLogin = (e) => {
+    setLog((prevLog) => {
+      return {
+        ...prevLog,
+        [e.target.name]: e.target.value,
+      };
+    });
+  };
+  console.log(log);
+
+  const handleShowPassword = () => {
+    setShowPassword((prevPassword) => !prevPassword);
+  };
+
+  const handleMouseDownPassword = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <LoginSection>
       <Form>
@@ -27,37 +54,44 @@ const Login = () => {
             alt="recipe"
           />
         </LoginDiv>
+
         <FlexCol>
           <TextField
+            name="email"
             type="email"
             label="Email"
             placeholder="Enter your email"
             margin="normal"
+            onChange={handleLogin}
+            required
           />
-          {/*       <TextField
-        type="password"
-        label="Password"
-        placeholder="Enter your password"
-    /> */}
-          <OutlinedInput
-            id="outlined-adornment-password"
-            // type={values.showPassword ? "text" : "password"}
-            // value={values.password}
-            // onChange={handleChange("password")}
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="toggle password visibility"
-                  //   onClick={handleClickShowPassword}
-                  //   onMouseDown={handleMouseDownPassword}
-                  edge="end"
-                >
-                  {<VisibilityOff />}
-                </IconButton>
-              </InputAdornment>
-            }
-            label="Password"
-          />
+
+          <FormControl variant="outlined">
+            <InputLabel htmlFor="outlined-adornment-password">
+              Password
+            </InputLabel>
+            <OutlinedInput
+              name="password"
+              id="outlined-adornment-password"
+              type={showPassword ? "text" : "password"}
+              placeholder="Enter your password"
+              label="Password"
+              onChange={handleLogin}
+              required
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                    edge="end"
+                  >
+                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              }
+            />
+          </FormControl>
         </FlexCol>
 
         <Button
@@ -72,7 +106,7 @@ const Login = () => {
           Login
         </Button>
         <LoginText>
-          Don't you have an account?
+          Don't you have an account?{" "}
           <SignUpLink to="/signup">Sign up!</SignUpLink>
         </LoginText>
       </Form>

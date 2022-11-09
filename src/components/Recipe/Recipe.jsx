@@ -54,9 +54,8 @@ const Recipe = () => {
   const searchMeal = (e) => {
     e.preventDefault();
     getData();
+    setFood({ query: "", meal: "" });
   };
-
-  // console.log(food);
 
   return (
     <>

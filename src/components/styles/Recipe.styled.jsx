@@ -43,9 +43,7 @@ export const FoodInput = styled.input`
   padding: 0.8rem 0.5rem;
 `;
 
-export const FoodForm = styled.form`
-  border: 1px solid #f00;
-`;
+export const FoodForm = styled.form``;
 
 export const SearchBtn = styled.button`
   background-color: #00f;

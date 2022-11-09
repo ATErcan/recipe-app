@@ -14,6 +14,7 @@ export const StyledNav = styled.nav`
 export const MainHeading = styled.h2`
   font-size: 1.3rem;
   padding: 1rem;
+  color: #fff;
 `;
 
 export const Icon = styled(GiHamburgerMenu)`

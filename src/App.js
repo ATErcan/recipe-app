@@ -11,9 +11,13 @@ import Recipe from "./components/Recipe/Recipe";
 
 function App() {
   const [login, setLogin] = useState(false);
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+  });
 
   return (
-    <LoginContext.Provider value={{ login, setLogin }}>
+    <LoginContext.Provider value={{ login, setLogin, user, setUser }}>
       <Br>
         <GlobalStyles />
         <Navbar />

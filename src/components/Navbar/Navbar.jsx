@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import { Link } from "react-router-dom";
 import { LoginContext } from "../../context/LoginContext";
 import {
   NavContainer,
@@ -19,7 +20,9 @@ const Navbar = () => {
 
   return (
     <StyledNav>
-      <MainHeading>{`<aTe></Recipes>`}</MainHeading>
+      <Link to="/" style={{ textDecoration: "none" }}>
+        <MainHeading>{`<aTe></Recipes>`}</MainHeading>
+      </Link>
       <Icon onClick={toggleNavbar} />
 
       <NavContainer navToggle={navToggle}>
