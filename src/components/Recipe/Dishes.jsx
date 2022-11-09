@@ -13,7 +13,6 @@ const Dishes = ({ food }) => {
   const navigate = useNavigate();
 
   const showDetails = () => {
-    console.log(food._links.self.href.split("").slice(38));
     const linkArr = food._links.self.href.split("").slice(38);
     const indexOfQ = linkArr.indexOf("?");
     const link = linkArr.slice(0, indexOfQ).join("");
@@ -27,6 +26,7 @@ const Dishes = ({ food }) => {
           food.recipe.images.LARGE?.url ||
           "https://cdn-icons-png.flaticon.com/512/467/467853.png"
         }
+        alt={food.recipe.label}
       />
       <DishName>{food.recipe.label}</DishName>
       <ul>
