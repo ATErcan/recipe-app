@@ -17,7 +17,8 @@ import {
   SignUpLink,
 } from "../styles/Login.styled";
 import Button from "@mui/material/Button";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { LoginContext } from "../../context/LoginContext";
 
 const Login = () => {
   const [log, setLog] = useState({
@@ -25,6 +26,7 @@ const Login = () => {
     password: "",
   });
   const [showPassword, setShowPassword] = useState(false);
+  const { setLogin } = useContext(LoginContext);
 
   const handleLogin = (e) => {
     setLog((prevLog) => {
@@ -35,7 +37,7 @@ const Login = () => {
     });
   };
 
-  const login = (e) => {
+  const logIn = (e) => {
     e.preventDefault();
     const users = JSON.parse(sessionStorage.getItem("users"));
     const isValid = (user) =>
@@ -43,6 +45,7 @@ const Login = () => {
     console.log(users);
     if (users && users.some(isValid)) {
       console.log("Login Successful");
+      setLogin(true);
     }
   };
 
@@ -56,7 +59,7 @@ const Login = () => {
 
   return (
     <LoginSection>
-      <Form onSubmit={login}>
+      <Form onSubmit={logIn}>
         <LoginDiv>
           <LoginTitle>Login</LoginTitle>
           <RecipeImage
@@ -67,6 +70,7 @@ const Login = () => {
 
         <FlexCol>
           <TextField
+            InputLabelProps={{ required: false }}
             name="email"
             type="email"
             label="Email"

@@ -82,6 +82,7 @@ const SignUp = () => {
         </LoginDiv>
         <FlexCol>
           <TextField
+            InputLabelProps={{ required: false }}
             name="email"
             type="email"
             label="Email"
@@ -89,6 +90,7 @@ const SignUp = () => {
             margin="normal"
             value={user.email || ""}
             onChange={handleSignUpValues}
+            required
           />
 
           <FormControl variant="outlined">

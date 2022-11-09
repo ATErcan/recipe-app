@@ -11,10 +11,11 @@ import {
   SearchContainer,
   TitlesContainer,
 } from "../styles/Recipe.styled";
+
 import Preview from "./Preview";
 
 const Recipe = () => {
-  const [recipe, setRecipe] = useState("");
+  const [recipes, setRecipes] = useState("");
   const [food, setFood] = useState({
     query: "",
     meal: "",
@@ -30,7 +31,7 @@ const Recipe = () => {
 
   const getData = async () => {
     const { data } = await axios(url);
-    setRecipe(data);
+    setRecipes(data);
   };
 
   const mealType = (e) => {
@@ -91,7 +92,7 @@ const Recipe = () => {
           <SearchBtn>Search</SearchBtn>
         </SearchContainer>
       </FoodForm>
-      {recipe.hits && <Preview recipe={recipe} />}
+      {recipes.hits && <Preview recipes={recipes} />}
     </>
   );
 };

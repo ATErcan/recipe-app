@@ -18,6 +18,10 @@ const Navbar = () => {
     setNavToggle((prevNavToggle) => !prevNavToggle);
   };
 
+  const handleLogout = () => {
+    setLogin(false);
+  };
+
   return (
     <StyledNav>
       <Link to="/" style={{ textDecoration: "none" }}>
@@ -31,7 +35,9 @@ const Navbar = () => {
         <GitHub href="https://github.com/ATErcan" target="_blank">
           Github
         </GitHub>
-        <NavLinks to="login">{login ? "Logout" : "Login"}</NavLinks>
+        <NavLinks to="login" onClick={handleLogout}>
+          {login ? "Logout" : "Login"}
+        </NavLinks>
       </NavContainer>
     </StyledNav>
   );

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import {
   AboutContainer,
   AboutSection,
@@ -12,6 +13,10 @@ const About = () => {
     year: 1999,
     age: "",
   });
+
+  // const { state: food } = useLocation();
+
+  // console.log(food);
 
   useEffect(() => {
     setAge((prevAge) => {
