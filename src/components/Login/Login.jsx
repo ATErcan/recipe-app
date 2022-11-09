@@ -34,7 +34,17 @@ const Login = () => {
       };
     });
   };
-  console.log(log);
+
+  const login = (e) => {
+    e.preventDefault();
+    const users = JSON.parse(sessionStorage.getItem("users"));
+    const isValid = (user) =>
+      user.email === log.email && user.password === log.password;
+    console.log(users);
+    if (users && users.some(isValid)) {
+      console.log("Login Successful");
+    }
+  };
 
   const handleShowPassword = () => {
     setShowPassword((prevPassword) => !prevPassword);
@@ -46,7 +56,7 @@ const Login = () => {
 
   return (
     <LoginSection>
-      <Form>
+      <Form onSubmit={login}>
         <LoginDiv>
           <LoginTitle>Login</LoginTitle>
           <RecipeImage
