@@ -19,6 +19,7 @@ import {
 import Button from "@mui/material/Button";
 import { useContext, useState } from "react";
 import { LoginContext } from "../../context/LoginContext";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [log, setLog] = useState({
@@ -26,7 +27,8 @@ const Login = () => {
     password: "",
   });
   const [showPassword, setShowPassword] = useState(false);
-  const { setLogin } = useContext(LoginContext);
+  const { setLogin, from } = useContext(LoginContext);
+  const navigate = useNavigate();
 
   const handleLogin = (e) => {
     setLog((prevLog) => {
@@ -42,10 +44,16 @@ const Login = () => {
     const users = JSON.parse(sessionStorage.getItem("users"));
     const isValid = (user) =>
       user.email === log.email && user.password === log.password;
-    console.log(users);
+    const isEmailValid = (user) =>
+      user.email === log.email && user.password !== log.password;
     if (users && users.some(isValid)) {
-      console.log("Login Successful");
+      alert("Login Successful");
       setLogin(true);
+      from ? navigate(-1) : navigate("/");
+    } else if (users && users.some(isEmailValid)) {
+      alert("Incorrect Password");
+    } else {
+      alert("User could not found");
     }
   };
 

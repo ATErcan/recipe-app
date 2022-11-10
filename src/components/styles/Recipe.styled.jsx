@@ -52,3 +52,11 @@ export const SearchBtn = styled.button`
   border-radius: 10px;
   color: #fff;
 `;
+
+export const LoadContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 300px;
+`;

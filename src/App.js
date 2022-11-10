@@ -17,9 +17,12 @@ function App() {
     email: "",
     password: "",
   });
+  const [from, setFrom] = useState(false);
 
   return (
-    <LoginContext.Provider value={{ login, setLogin, user, setUser }}>
+    <LoginContext.Provider
+      value={{ login, setLogin, user, setUser, from, setFrom }}
+    >
       <Br>
         <GlobalStyles />
         <Navbar />
@@ -29,7 +32,9 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<SignUp />} />
           <Route path="recipe" element={<Recipe />} />
-          <Route path="recipe/:id" element={<Details />} />
+          <Route path="recipe/:id" element={<PrivateRouter />}>
+            <Route path="" element={<Details />} />
+          </Route>
         </Routes>
       </Br>
     </LoginContext.Provider>

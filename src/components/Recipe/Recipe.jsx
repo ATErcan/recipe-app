@@ -5,12 +5,14 @@ import {
   Dropdown,
   FoodForm,
   FoodInput,
+  LoadContainer,
   Options,
   PointIcon,
   SearchBtn,
   SearchContainer,
   TitlesContainer,
 } from "../styles/Recipe.styled";
+import ClockLoader from "react-spinners/ClockLoader";
 
 import Preview from "./Preview";
 
@@ -23,6 +25,10 @@ const Recipe = () => {
   const apiKey = "9c59ce7a6265f318af156fddcd89d92a";
   const apiId = "942fcac4";
   const url = `https://api.edamam.com/api/recipes/v2?type=public&q=${food.query}&app_id=${apiId}&app_key=${apiKey}&mealType=${food.meal}`;
+  const [state, setState] = useState({
+    loading: false,
+    error: false,
+  });
 
   /*   useEffect(() => {
     getData();
@@ -30,8 +36,30 @@ const Recipe = () => {
   // console.log(recipe.hits);
 
   const getData = async () => {
-    const { data } = await axios(url);
-    setRecipes(data);
+    setState((prevState) => {
+      return {
+        ...prevState,
+        loading: true,
+      };
+    });
+    try {
+      const { data } = await axios(url);
+      setRecipes(data);
+    } catch (error) {
+      setState((prevState) => {
+        return {
+          ...prevState,
+          error: true,
+        };
+      });
+    } finally {
+      setState((prevState) => {
+        return {
+          ...prevState,
+          loading: false,
+        };
+      });
+    }
   };
 
   const mealType = (e) => {
@@ -93,6 +121,9 @@ const Recipe = () => {
         </SearchContainer>
       </FoodForm>
       {recipes.hits && <Preview recipes={recipes} />}
+      <LoadContainer>
+        <ClockLoader color="#00f" size={100} speedMultiplier={3} />
+      </LoadContainer>
     </>
   );
 };

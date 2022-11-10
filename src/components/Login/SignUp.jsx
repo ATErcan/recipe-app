@@ -10,12 +10,11 @@ import {
   FlexCol,
   Form,
   LoginDiv,
+  LoginLink,
   LoginSection,
   LoginText,
   LoginTitle,
   RecipeImage,
-  SignUpLink,
-  SuccessText,
 } from "../styles/Login.styled";
 import Button from "@mui/material/Button";
 import { useContext, useState } from "react";
@@ -26,7 +25,7 @@ const SignUp = () => {
   const [savedUsers, setSavedUsers] = useState(
     JSON.parse(sessionStorage.getItem("users")) || []
   );
-  const { user, setUser } = useContext(LoginContext);
+  const { user, setUser, setFrom } = useContext(LoginContext);
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
@@ -53,7 +52,7 @@ const SignUp = () => {
       email: user.email,
       password: user.password,
     };
-    console.log(savedUsers);
+
     setSavedUsers((prevSavedUsers) => {
       if (prevSavedUsers.length === 0) {
         sessionStorage.setItem("users", JSON.stringify([newUser]));
@@ -66,7 +65,13 @@ const SignUp = () => {
         return JSON.parse(sessionStorage.getItem("users"));
       }
     });
+    alert("Sign Up Successfull");
     setUser({ email: "", password: "" });
+    navigate("/login");
+  };
+
+  const goLogin = () => {
+    setFrom(false);
     navigate("/login");
   };
 
@@ -135,7 +140,9 @@ const SignUp = () => {
         </Button>
         <LoginText>
           Do you already have an account?{" "}
-          <SignUpLink to="/login">Login</SignUpLink>
+          <LoginLink onClick={goLogin} type="button">
+            Login
+          </LoginLink>
         </LoginText>
       </Form>
     </LoginSection>

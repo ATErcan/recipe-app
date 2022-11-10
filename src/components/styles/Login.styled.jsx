@@ -49,8 +49,9 @@ export const FlexCol = styled.div`
   flex-direction: column;
 `;
 
-export const SuccessText = styled.h5`
-  color: #0f0;
-  text-align: center;
-  font-size: 1.1rem;
+export const LoginLink = styled.button`
+  background-color: #fff;
+  text-decoration: underline;
+  border: none;
+  color: #000;
 `;

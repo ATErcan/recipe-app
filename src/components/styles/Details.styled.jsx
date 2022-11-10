@@ -1,10 +1,9 @@
 import styled from "styled-components";
 
 export const RecipeDetails = styled.section`
-  position: relative;
-  z-index: -2;
   background-color: #f2f2f2;
   padding: 0.5rem 1rem 2rem;
+  min-height: calc(100vh - 56px);
 `;
 
 export const Recipe = styled.div`
@@ -17,15 +16,16 @@ export const RecipeImage = styled.img`
   position: relative;
   width: 80%;
   margin-top: 3rem;
+  z-index: 1;
 `;
 
 export const RecipeInfo = styled.div`
   background-color: #f5f7fa;
-  width: 70%;
+  width: 75%;
   height: auto;
   position: relative;
   margin-top: -4rem;
-  z-index: 1;
+  z-index: 2;
   padding: 1rem;
   font-family: Roboto, sans-serif;
 `;
@@ -73,6 +73,54 @@ export const OtherInfo = styled.div`
   height: auto;
   position: relative;
   margin-top: -17rem;
-  z-index: -1;
-  padding-top: 18rem;
+  padding: 18rem 1rem 2rem;
+  color: #fff;
+  font-family: "Open Sans", sans-serif;
+  font-style: italic;
+`;
+
+export const IngTitle = styled.h4`
+  font-size: 1.5rem;
+  font-family: "Open Sans", sans-serif;
+  font-style: italic;
+  margin-left: 0.7rem;
+  line-height: 2rem;
+  text-decoration: underline;
+`;
+
+export const Ingredients = styled.li`
+  list-style-type: circle;
+  margin-left: 0.7rem;
+  font-family: "Open Sans", sans-serif;
+  font-style: italic;
+  font-size: 1rem;
+  line-height: 1.5rem;
+`;
+
+export const OtherTitles = styled(InfoTitles)`
+  font-size: 1.1rem;
+  margin: 0.5rem 0;
+`;
+
+export const OtherText = styled(InfoText)`
+  font-size: 1rem;
+  line-height: 1.4rem;
+  &:nth-child(even) {
+    color: #8fb2b9;
+  }
+  &:hover {
+    opacity: 0.8;
+  }
+`;
+
+export const Source = styled.p`
+  text-align: end;
+  font-size: 1rem;
+  font-style: normal;
+`;
+
+export const SourceUrl = styled.a`
+  color: #fff;
+  font-style: italic;
+  font-weight: bold;
 `;
