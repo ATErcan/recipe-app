@@ -8,7 +8,7 @@ export const HomeSection = styled.section`
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
-  height: calc(100vh - 57px);
+  min-height: calc(100vh - 57px);
   padding: 4rem 1.5rem;
   display: flex;
   flex-direction: column;
@@ -16,10 +16,10 @@ export const HomeSection = styled.section`
   overflow: auto;
   @media screen and (min-width: 576px) {
     background-image: url(${bgHome});
-    height: calc(100vh - 97px);
+    min-height: calc(100vh - 97px);
   }
   @media screen and (min-width: 768px) {
-    height: calc(100vh - 103px);
+    min-height: calc(100vh - 103px);
   }
   @media screen and (min-width: 992px) {
     padding: 0 5rem;

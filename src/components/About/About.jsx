@@ -7,6 +7,7 @@ import {
   Me,
   Name,
 } from "../styles/About.styled";
+import developer from "../../images/developer.png";
 
 const About = () => {
   const [age, setAge] = useState({
@@ -30,7 +31,7 @@ const About = () => {
   return (
     <AboutSection>
       <AboutContainer>
-        <Image src="https://img.freepik.com/free-vector/code-typing-concept-illustration_114360-3581.jpg?w=826&t=st=1667916027~exp=1667916627~hmac=509178c587d747a3c0af4bbea45f679915d33b00a10d502634484271537b390d" />
+        <Image src={developer} />
         <Name>A.Talha Ercan</Name>
         <Me>
           Hi everyone. Thank you for visiting my website. I'm a full-stack web
