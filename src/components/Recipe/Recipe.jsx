@@ -1,23 +1,20 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
   CookIcon,
   Dropdown,
   FoodForm,
   FoodInput,
-  LoadContainer,
   Options,
   PointIcon,
   SearchBtn,
   SearchContainer,
   TitlesContainer,
 } from "../styles/Recipe.styled";
-import ClockLoader from "react-spinners/ClockLoader";
-
-import Preview from "./Preview";
+import Result from "./Result";
 
 const Recipe = () => {
-  const [recipes, setRecipes] = useState("");
+  const [recipes, setRecipes] = useState(null);
   const [food, setFood] = useState({
     query: "",
     meal: "",
@@ -25,37 +22,32 @@ const Recipe = () => {
   const apiKey = "9c59ce7a6265f318af156fddcd89d92a";
   const apiId = "942fcac4";
   const url = `https://api.edamam.com/api/recipes/v2?type=public&q=${food.query}&app_id=${apiId}&app_key=${apiKey}&mealType=${food.meal}`;
-  const [state, setState] = useState({
+  const [status, setStatus] = useState({
     loading: false,
     error: false,
   });
 
-  /*   useEffect(() => {
-    getData();
-  }, []); */
-  // console.log(recipe.hits);
-
   const getData = async () => {
-    setState((prevState) => {
+    setStatus((prevStatus) => {
       return {
-        ...prevState,
+        error: false,
         loading: true,
       };
     });
     try {
       const { data } = await axios(url);
-      setRecipes(data);
+      setRecipes(data.hits);
     } catch (error) {
-      setState((prevState) => {
+      setStatus((prevStatus) => {
         return {
-          ...prevState,
+          ...prevStatus,
           error: true,
         };
       });
     } finally {
-      setState((prevState) => {
+      setStatus((prevStatus) => {
         return {
-          ...prevState,
+          ...prevStatus,
           loading: false,
         };
       });
@@ -120,10 +112,7 @@ const Recipe = () => {
           <SearchBtn>Search</SearchBtn>
         </SearchContainer>
       </FoodForm>
-      {recipes.hits && <Preview recipes={recipes} />}
-      <LoadContainer>
-        <ClockLoader color="#00f" size={100} speedMultiplier={3} />
-      </LoadContainer>
+      <Result recipes={recipes} status={status} />
     </>
   );
 };
