@@ -4,6 +4,8 @@ import { ImPointRight } from "react-icons/im";
 
 export const RecipeSection = styled.section`
   min-height: calc(100vh -57px);
+  background-color: #f9f6f2;
+
   @media screen and (min-width: 576px) {
     min-height: calc(100vh - 97px);
   }
@@ -94,6 +96,10 @@ export const SearchBtn = styled.button`
   border: none;
   border-radius: 10px;
   color: #fff;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.8;
+  }
 `;
 
 export const LoadContainer = styled.div`

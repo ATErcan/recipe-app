@@ -1,6 +1,7 @@
 import {
   Chef,
   Cuisine,
+  CuisineUl,
   DetailsBtn,
   DishCard,
   DishImage,
@@ -34,12 +35,14 @@ const Dishes = ({ food }) => {
         alt={food.recipe.label}
       />
       <DishName>{food.recipe.label}</DishName>
-      <ul>
+      <CuisineUl>
         {food.recipe.cuisineType.map((rec) => {
           return <Cuisine key={nanoid()}>{rec}</Cuisine>;
         })}
-      </ul>
-      <Chef>Chef: {food.recipe.source}</Chef>
+      </CuisineUl>
+      <Chef>
+        <b>Chef:</b> {food.recipe.source}
+      </Chef>
       <DetailsBtn onClick={showDetails}>Details</DetailsBtn>
     </DishCard>
   );

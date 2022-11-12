@@ -8,6 +8,22 @@ export const CardContainer = styled.section`
   padding: 1rem 0;
   justify-content: center;
   background-color: #f9f6f2;
+  @media screen and (min-width: 576px) {
+    grid-template-columns: 50%;
+    padding: 2rem 0;
+  }
+  @media screen and (min-width: 768px) {
+    grid-template-columns: 40% 40%;
+    gap: 1.5rem;
+  }
+  @media screen and (min-width: 992px) {
+    grid-template-columns: 25% 25% 25%;
+    gap: 1.5rem 2rem;
+  }
+  @media screen and (min-width: 1200px) {
+    grid-template-columns: repeat(3, 300px);
+    gap: 2rem 3rem;
+  }
 `;
 
 export const DishCard = styled.div`
@@ -33,6 +49,11 @@ export const DishName = styled.h4`
   margin: 1rem 0 0.1rem;
 `;
 
+export const CuisineUl = styled.ul`
+  display: flex;
+  column-gap: 0.5rem;
+`;
+
 export const Cuisine = styled.li`
   list-style-type: none;
   text-transform: capitalize;
@@ -51,4 +72,9 @@ export const DetailsBtn = styled.button`
   color: #fff;
   padding: 0.5rem 1.8rem;
   border-radius: 20px;
+  cursor: pointer;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  &:hover {
+    opacity: 0.8;
+  }
 `;
