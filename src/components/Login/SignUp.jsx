@@ -67,6 +67,7 @@ const SignUp = () => {
     });
     alert("Sign Up Successfull");
     setUser({ email: "", password: "" });
+    setFrom(false);
     navigate("/login");
   };
 
