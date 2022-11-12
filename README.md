@@ -16,7 +16,7 @@ HTML, CSS, Javascript, React, React-router, Styled-components, Material ui, Axio
 
 
 ## Demo
-
+![](https://github.com/ATErcan/recipe-app/blob/main/demo.gif)
 https://ate-recipes.netlify.app
 ## Installation
 
