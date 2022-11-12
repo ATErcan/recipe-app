@@ -30,7 +30,7 @@ export const MainHeading = styled.h2`
     opacity: 0.8;
   }
   @media screen and (min-width: 576px) {
-    font-size: 1.7rem;
+    font-size: 1.65rem;
   }
   @media screen and (min-width: 768px) {
     font-size: 2rem;

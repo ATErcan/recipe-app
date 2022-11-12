@@ -7,6 +7,7 @@ import {
   InfoUl,
   Ingredients,
   IngTitle,
+  MainContainer,
   OtherInfo,
   OtherText,
   OtherTitles,
@@ -57,84 +58,90 @@ const Details = () => {
   return (
     <RecipeDetails>
       <Recipe>
-        <RecipeImage src={food.recipe.image} alt={food.recipe.label} />
-        <RecipeInfo>
-          <RecipeName>{food.recipe.label}</RecipeName>
-          <InfoContainer>
-            <Flex>
-              <InfoTitles>
-                {<FcAlarmClock style={{ fontSize: "1.2rem" }} />} Meal Type:
-                {<InfoUl>{mealType}</InfoUl>}
-              </InfoTitles>
-            </Flex>
-            <Flex>
+        <MainContainer>
+          <RecipeImage src={food.recipe.image} alt={food.recipe.label} />
+          <RecipeInfo>
+            <RecipeName>{food.recipe.label}</RecipeName>
+            <InfoContainer>
+              <Flex>
+                <InfoTitles>
+                  {<FcAlarmClock style={{ fontSize: "1.2rem" }} />} Meal Type:
+                  {<InfoUl>{mealType}</InfoUl>}
+                </InfoTitles>
+              </Flex>
+              <Flex>
+                <Flex>
+                  <InfoTitles>
+                    {
+                      <GiForkKnifeSpoon
+                        style={{ fontSize: "1.2rem", color: "#888" }}
+                      />
+                    }{" "}
+                    Cuisine: {<InfoUl>{cuisine}</InfoUl>}
+                  </InfoTitles>
+                </Flex>
+              </Flex>
+              <Flex>
+                <InfoTitles>
+                  {<BiDish style={{ fontSize: "1.2rem" }} />} Dish Type:{" "}
+                  {<InfoUl>{dishType}</InfoUl>}
+                </InfoTitles>
+              </Flex>
               <Flex>
                 <InfoTitles>
                   {
-                    <GiForkKnifeSpoon
-                      style={{ fontSize: "1.2rem", color: "#888" }}
+                    <SiCodechef
+                      style={{ fontSize: "1.2rem", color: "#964B00" }}
                     />
                   }{" "}
-                  Cuisine: {<InfoUl>{cuisine}</InfoUl>}
+                  Chef:{" "}
                 </InfoTitles>
+                <InfoText>{food.recipe.source}</InfoText>
               </Flex>
-            </Flex>
+            </InfoContainer>
+          </RecipeInfo>
+          <OtherInfo>
+            <IngTitle>Ingredients</IngTitle>
+            <ul>{ingredients}</ul>
             <Flex>
-              <InfoTitles>
-                {<BiDish style={{ fontSize: "1.2rem" }} />} Dish Type:{" "}
-                {<InfoUl>{dishType}</InfoUl>}
-              </InfoTitles>
+              <OtherTitles>
+                Calories:{" "}
+                <OtherText>{Math.round(food.recipe.calories)}</OtherText>
+              </OtherTitles>
             </Flex>
-            <Flex>
-              <InfoTitles>
-                {
-                  <SiCodechef
-                    style={{ fontSize: "1.2rem", color: "#964B00" }}
-                  />
-                }{" "}
-                Chef:{" "}
-              </InfoTitles>
-              <InfoText>{food.recipe.source}</InfoText>
-            </Flex>
-          </InfoContainer>
-        </RecipeInfo>
-        <OtherInfo>
-          <IngTitle>Ingredients</IngTitle>
-          <ul>{ingredients}</ul>
-          <Flex>
-            <OtherTitles>
-              Calories:{" "}
-              <OtherText>{Math.round(food.recipe.calories)}</OtherText>
-            </OtherTitles>
-          </Flex>
-          <Flex>
-            <OtherTitles>
-              {<GiHealthPotion style={{ color: "#f00", fontSize: "1.5rem" }} />}{" "}
-              Health Friendly:
-              <InfoUl>{healthLabels}</InfoUl>
-            </OtherTitles>
-          </Flex>
-          {food.recipe.cautions && (
             <Flex>
               <OtherTitles>
                 {
-                  <AiOutlineWarning
-                    style={{ color: "#ffcc00", fontSize: "1.5rem" }}
+                  <GiHealthPotion
+                    style={{ color: "#f00", fontSize: "1.5rem" }}
                   />
                 }{" "}
-                Cautions:
-                <InfoUl>{cautions}</InfoUl>
+                Health Friendly:
+                <InfoUl>{healthLabels}</InfoUl>
               </OtherTitles>
             </Flex>
-          )}
-          <Source>
-            You can find more info{" "}
-            <SourceUrl href={food.recipe.url} target="_blank">
-              here
-            </SourceUrl>
-            .
-          </Source>
-        </OtherInfo>
+            {food.recipe.cautions.length > 0 && (
+              <Flex>
+                <OtherTitles>
+                  {
+                    <AiOutlineWarning
+                      style={{ color: "#ffcc00", fontSize: "1.5rem" }}
+                    />
+                  }{" "}
+                  Cautions:
+                  <InfoUl>{cautions}</InfoUl>
+                </OtherTitles>
+              </Flex>
+            )}
+            <Source>
+              You can find more info{" "}
+              <SourceUrl href={food.recipe.url} target="_blank">
+                here
+              </SourceUrl>
+              .
+            </Source>
+          </OtherInfo>
+        </MainContainer>
       </Recipe>
     </RecipeDetails>
   );
