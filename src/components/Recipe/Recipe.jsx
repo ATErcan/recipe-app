@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   CookIcon,
   CookText,
@@ -32,8 +32,8 @@ const Recipe = () => {
     query: "",
     meal: "",
   });
-  const apiKey = "9c59ce7a6265f318af156fddcd89d92a";
-  const apiId = "942fcac4";
+  const apiKey = process.env.REACT_APP_API_KEY;
+  const apiId = process.env.REACT_APP_API_ID;
   const url = `https://api.edamam.com/api/recipes/v2?type=public&q=${food.query}&app_id=${apiId}&app_key=${apiKey}&mealType=${food.meal}`;
   const [status, setStatus] = useState({
     loading: false,
@@ -43,12 +43,14 @@ const Recipe = () => {
   useEffect(() => {
     setPages((prevPages) => ({ ...prevPages, page: 0, urlArray: [url] }));
     setNewSearch(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [food]);
 
   useEffect(() => {
     if (!pages.first && !newSearch) {
       getData();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pages.page]);
 
   const getData = async () => {
@@ -141,6 +143,15 @@ const Recipe = () => {
           </SearchContainer>
         </FoodForm>
       </RecipeContainer>
+      {recipes?.length > 0 && (
+        <Arrows
+          apiData={apiData}
+          pages={pages}
+          setPages={setPages}
+          firstPage={firstPage}
+          setNewSearch={setNewSearch}
+        />
+      )}
       <Result recipes={recipes} status={status} />
       {recipes?.length > 0 && (
         <Arrows

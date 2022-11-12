@@ -22,7 +22,7 @@ import { LoginContext } from "../../context/LoginContext";
 import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
-  const [savedUsers, setSavedUsers] = useState(
+  const [, setSavedUsers] = useState(
     JSON.parse(sessionStorage.getItem("users")) || []
   );
   const { user, setUser, setFrom } = useContext(LoginContext);
