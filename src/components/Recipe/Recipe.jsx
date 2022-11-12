@@ -2,11 +2,15 @@ import axios from "axios";
 import { useState } from "react";
 import {
   CookIcon,
+  CookText,
   Dropdown,
+  FindText,
   FoodForm,
   FoodInput,
   Options,
   PointIcon,
+  RecipeContainer,
+  RecipeSection,
   SearchBtn,
   SearchContainer,
   TitlesContainer,
@@ -79,41 +83,43 @@ const Recipe = () => {
   };
 
   return (
-    <>
-      <TitlesContainer>
-        <h1>Ready to Cook?</h1>
-        <CookIcon />
-      </TitlesContainer>
+    <RecipeSection>
+      <RecipeContainer>
+        <TitlesContainer>
+          <CookText>Ready to Cook?</CookText>
+          <CookIcon />
+        </TitlesContainer>
 
-      <TitlesContainer>
-        <PointIcon />
-        <h4>Find Your Recipe</h4>
-      </TitlesContainer>
+        <TitlesContainer>
+          <PointIcon />
+          <FindText>Find Your Recipe</FindText>
+        </TitlesContainer>
 
-      <FoodForm onSubmit={searchMeal}>
-        <SearchContainer>
-          <Dropdown value={food.meal} onChange={mealType} required>
-            <Options value="" disabled>
-              -Select Meal-
-            </Options>
-            <Options value="breakfast">Breakfast</Options>
-            <Options value="lunch">Lunch</Options>
-            <Options value="dinner">Dinner</Options>
-            <Options value="snack">Snack</Options>
-            <Options value="teatime">Teatime</Options>
-          </Dropdown>
+        <FoodForm onSubmit={searchMeal}>
+          <SearchContainer>
+            <Dropdown value={food.meal} onChange={mealType} required>
+              <Options value="" disabled>
+                -Select Meal-
+              </Options>
+              <Options value="breakfast">Breakfast</Options>
+              <Options value="lunch">Lunch</Options>
+              <Options value="dinner">Dinner</Options>
+              <Options value="snack">Snack</Options>
+              <Options value="teatime">Teatime</Options>
+            </Dropdown>
 
-          <FoodInput
-            placeholder="Search"
-            onChange={mealName}
-            value={food.query}
-            required
-          />
-          <SearchBtn>Search</SearchBtn>
-        </SearchContainer>
-      </FoodForm>
+            <FoodInput
+              placeholder="Search"
+              onChange={mealName}
+              value={food.query}
+              required
+            />
+            <SearchBtn>Search</SearchBtn>
+          </SearchContainer>
+        </FoodForm>
+      </RecipeContainer>
       <Result recipes={recipes} status={status} />
-    </>
+    </RecipeSection>
   );
 };
 
