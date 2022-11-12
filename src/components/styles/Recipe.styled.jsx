@@ -3,9 +3,9 @@ import { GiCook } from "react-icons/gi";
 import { ImPointRight } from "react-icons/im";
 
 export const RecipeSection = styled.section`
-  min-height: calc(100vh -57px);
+  min-height: calc(100vh - 57px);
   background-color: #f9f6f2;
-
+  padding: 1rem 0;
   @media screen and (min-width: 576px) {
     min-height: calc(100vh - 97px);
   }

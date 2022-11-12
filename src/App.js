@@ -10,6 +10,7 @@ import About from "./components/About/About";
 import Recipe from "./components/Recipe/Recipe";
 import PrivateRouter from "./components/router/PrivateRouter";
 import Details from "./components/Recipe/Details";
+import NoPage from "./components/Recipe/NoPage";
 
 function App() {
   const [login, setLogin] = useState(false);
@@ -35,6 +36,7 @@ function App() {
           <Route path="recipe/:id" element={<PrivateRouter />}>
             <Route path="" element={<Details />} />
           </Route>
+          <Route path="*" element={<NoPage />} />
         </Routes>
       </Br>
     </LoginContext.Provider>

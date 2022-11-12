@@ -1,5 +1,7 @@
 import { ClockLoader } from "react-spinners";
 import { LoadContainer } from "../styles/Recipe.styled";
+import Error from "./Error";
+import NotFound from "./NotFound";
 import Preview from "./Preview";
 
 const Result = ({ recipes, status }) => {
@@ -10,9 +12,9 @@ const Result = ({ recipes, status }) => {
       </LoadContainer>
     );
   } else if (status.error) {
-    return <p>error</p>;
+    return <Error />;
   } else if (recipes?.length === 0) {
-    return <p>notFound</p>;
+    return <NotFound />;
   } else if (recipes?.length > 0) {
     return <Preview recipes={recipes} />;
   }

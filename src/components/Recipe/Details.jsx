@@ -1,4 +1,4 @@
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import {
   Flex,
   InfoContainer,
@@ -29,7 +29,7 @@ import { AiOutlineWarning } from "react-icons/ai";
 
 const Details = () => {
   const { state: food } = useLocation();
-  const { id } = useParams();
+  // const { id } = useParams();
 
   const ingredients = food.recipe.ingredientLines.map((ing) => {
     return <Ingredients key={nanoid()}>{ing}</Ingredients>;
